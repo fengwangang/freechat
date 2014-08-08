@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<title>Freechat</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <script type="text/javascript" src="/static/js/login.js"></script>
+  </head>
+  <body>
+  	<div class="container">
+      <form action="/login" method="POST" onsubmit="return loginValidate(this);">
+  	  <div class="login-content">
+        <a href="http://freechat.fengwangang.com">
+          <img class="logo" src="/static/images/Freechat-opacity.png" />
+        </a>
+        <ul>
+          <li>
+            <span id="login_error" class="error_alert">{{error}}</span>
+          </li>
+          <li>
+            <input id="account" class="account-input" type="text" name="account" value= "{{account}}" placeholder="Account" maxlength="64" />
+          </li>
+          <li>
+            <input id="password" class="account-input" type="password" name="password" placeholder="Password" maxlength="32" />
+          </li>
+          <li class="btn">
+            <input class="account-input" type="submit" value="LogIn"/>
+            <a class="signup-link" href="">SignUp</a>
+          </li>
+        </ul>
+  	  </div>
+    </form>
+  	</div>
+    <div class="footer">
+      <p class="copyright">Copyright &copy; 2014 Feng. All Rights Reserved.</p>
+    </div>
+  </body>
+</html>

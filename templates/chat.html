@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<title>Freechat</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/chat.css" />
+    <script src="/static/js/jquery-1.11.0.min.js" style="text/javascript"></script>
+    <script src="/static/js/chat.js" style="text/javascript"></script>
+    
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="/static/images/background_6.jpg" />
+    </div>　
+    <div class="container">
+      <div class="main-content">
+        <div class="main-container">
+          <div class="main-panel">
+            <a><img class="avatar" src="{{user.avatar}}" /></a>
+            <span class="name">{{user.name}}</span>
+            <span class="emotion">{{user.emotion}}</span>
+            <div class="panel-header">
+              <h1>Contacts</h1>
+            </div>
+            <div class="panel-body">
+              <ul class="friend-list-area">
+
+                <!--friend list begin-->
+                {% for friend in friends %}
+                  <li class="friend-list-item" friendid="{{friend.friend_id}}" friendname="{{friend.alias_name}}" friendavatar="{{friend.avatar}}">
+                    <img class="friend-avatar {%if 0 == friend.status %}gray{%end%}" src="{{friend.avatar}}" />
+                    <p class="friend-name">{{friend.alias_name}}</p><span class="message-alert">10</span>
+                    <p class="friend-status">{{friend.emotion}}</p>
+                  </li>
+                {% end %}
+                <!--friend list end-->
+
+              </ul>
+            </div>
+            <div class="panel-footer">
+              <ul class="nav">
+                <li>
+                  <a class="tab_chat">
+                    <div class="tab_icon"></div>
+                    <span>Chat</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="tab_contact">
+                    <div class="tab_icon"></div>
+                    <span>Contact</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="tab_plugin">
+                    <div class="tab_icon"></div>
+                    <span>Plugin</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="tab_setting">
+                    <div class="tab_icon"></div>
+                    <span>Setting</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="chat-container">
+          <div id="chatPanel" class="chat-panel">
+            <div class="panel-header">
+              <h1 id="friendName"></h1>
+              <button class="close-btn">Close</button>
+            </div>
+            <div class="panel-body message-panel">
+              <ul id="message_list_area" class="message-list-area">
+                <li class="message-list-item chat-time">
+                  <span>12:00</span>
+                </li>
+              </ul>
+            </div>
+            <div class="panel-footer chat-toolbar">
+              <textarea id="input-message-area" class="input-message-area"></textarea>
+              <button id="send_message" class="send-btn">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--template begin-->
+    <li id="friend-list-item-template" class="friend-list-item" style="display:none;">
+      <img class="friend-avatar"/>
+      <p class="friend-name"></p>
+      <p class="friend-status"></p>
+    </li>
+
+    <li id="message-list-item-send" class="message-list-item send" style="display:none;">
+      <img id="message_avatar" class="message-avatar"/>
+      <p id="message_name" class="message-name"></p>
+      <p id="message_content" class="message-content"></p>
+    </li>
+
+    <li id="message-list-item-receive" class="message-list-item receive" style="display:none;">
+      <img id="message_avatar" class="message-avatar"/>
+      <p id="message_name" class="message-name"></p>
+      <p id="message_content" class="message-content"></p>
+    </li>
+    <!--template end-->
+    
+  </body>
+</html>
